@@ -1,23 +1,16 @@
 <script setup lang="ts">
-const ejercicios = [
-    {
-        nombre: "form-watch",
-        ruta: "/ejercicios/form-watch",
-    },
-    {
-        nombre: "Holamundo",
-        ruta: "/ejercicios/holamundo",
-    },
-    {
-        nombre: "v-for",
-        ruta: "/ejercicios/v-for",
-    },
-];
+//ruta automatizada
+//
+const router = useRouter();
+const rutas = router.getRoutes();
 </script>
 <template>
-    <h1>Hola mundo soy el index de pages</h1>
-    <ul>
-        <li><NuxtLink to="/ejercicios/form-watch">form-watch</NuxtLink></li>
-        <li><NuxtLink to="/ejercicios/holamundo">Holamundo</NuxtLink></li>
+    <h1 class="text-3xl mb-6">Hola mundo soy el index de pages</h1>
+
+    <h2 class="text-xl mb-2">Ruta automatizada</h2>
+    <ul class="list-disc pl-6">
+        <li v-for="ruta in rutas" :key="ruta.path">
+            <NuxtLink :to="ruta.path">{{ ruta.path }}</NuxtLink>
+        </li>
     </ul>
 </template>
