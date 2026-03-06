@@ -1,4 +1,4 @@
-<scrip setup lang="ts">
+<script setup lang="ts">
 const ejercicios = [
     {
         nombre: "form-watch",
@@ -13,7 +13,7 @@ const ejercicios = [
         ruta: "/ejercicios/v-for",
     },
 ];
-</scrip>
+</script>
 <template>
     <h1>Hola mundo soy el index de pages</h1>
     <ul>
