@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from "vue";
-<<<<<<< HEAD
-</script>
-=======
+
 const cambiar = ref(false);
 function mostrar() {
     cambiar.value = !cambiar.value;
@@ -24,4 +22,3 @@ function mostrar() {
         <h2 v-if="cambiar">Hola me muestro</h2>
     </Transition>
 </template>
->>>>>>> 720e8dd31ea7a5d62d222b692542d9a0da7754df
