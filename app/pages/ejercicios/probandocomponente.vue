@@ -1,6 +1,9 @@
 <script setup>
 import PrimerComponente from "../../components/otros/PrimerComponente";
+const recibirSaludo = (mensaje, mensaje2) => {
+    console.log(mensaje + mensaje2);
+};
 </script>
 <template>
-    <PrimerComponente nombre="John" edad="34"></PrimerComponente>
+    <PrimerComponente @saludar="recibirSaludo" nombre="John"></PrimerComponente>
 </template>
