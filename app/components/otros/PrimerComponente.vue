@@ -2,12 +2,12 @@
 defineProps({
     nombre: String,
 });
-const emit = defineEmits(["saludar"]);
-
-const enviar = () => {
-    emit("saludar", "Hola soy John", "Soy Mathi");
+const emit = defineEmits(["click"]);
+const disparar = () => {
+    emit("click", 5);
 };
 </script>
+
 <template>
-    <button @click="enviar">Enviar</button>
+    <button @click="disparar">Enviar</button>
 </template>

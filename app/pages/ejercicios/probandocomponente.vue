@@ -1,9 +1,12 @@
 <script setup>
 import PrimerComponente from "../../components/otros/PrimerComponente";
-const recibirSaludo = (mensaje, mensaje2) => {
-    console.log(mensaje + mensaje2);
+import { ref } from "vue";
+const numero = ref(0);
+const aumentar = () => {
+    return numero.value++;
 };
 </script>
 <template>
-    <PrimerComponente @saludar="recibirSaludo" nombre="John"></PrimerComponente>
+    <PrimerComponente @contador="aumentar" nombre="John"></PrimerComponente>
+    {{ numero }}
 </template>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Fira+Code:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  @apply bg-gray-100 text-black overflow-x-hidden;
+}
+
+code, pre {
+  font-family: 'Fira Code', monospace;
+}
+
+/* Global Neobrutalist styles */
+.brutal-border {
+  @apply border-4 border-black;
+}
+
+.brutal-shadow {
+  @apply shadow-[8px_8px_0px_0px_rgba(0,0,0,1)];
+}
+
+.brutal-card {
+  @apply bg-white brutal-border brutal-shadow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none;
+}
+
+.brutal-btn {
+  @apply brutal-border brutal-shadow font-black uppercase px-6 py-3 transition-all active:translate-x-1 active:translate-y-1 active:shadow-none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-black uppercase tracking-tighter;
+}
