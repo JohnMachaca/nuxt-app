@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import NeobrutalistExerciseCard from '~/components/neobrutalist/ExerciseCard.vue'
 import type { Exercise } from '~/types/exercise'
 
 defineProps<{

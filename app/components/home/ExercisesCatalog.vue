@@ -17,13 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import HomeExercisesToolbar from '~/components/home/ExercisesToolbar.vue'
-import HomeExercisesLoading from '~/components/home/ExercisesLoading.vue'
-import HomeExercisesError from '~/components/home/ExercisesError.vue'
-import HomeExercisesGrid from '~/components/home/ExercisesGrid.vue'
-import HomeExercisesEmpty from '~/components/home/ExercisesEmpty.vue'
-import { useExercisesCatalog } from '~/composables/useExercisesCatalog'
-
 const {
   pending,
   error,

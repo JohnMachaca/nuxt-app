@@ -1,11 +1,7 @@
-<script setup lang="ts">
-import NeobrutalistHero from '~/components/neobrutalist/Hero.vue'
-import HomeExercisesCatalog from '~/components/home/ExercisesCatalog.vue'
-</script>
 <template>
-  <div class="font-mono">
+  <div class="min-h-screen bg-gray-100 font-mono">
     <NeobrutalistHero />
     <HomeExercisesCatalog />
+    <HomeSiteFooter />
   </div>
 </template>
-
