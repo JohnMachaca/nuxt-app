@@ -9,5 +9,8 @@ export default defineNuxtConfig({
   },
   future: {
     compatibilityVersion: 4,
+  },
+  routeRules: {
+    '/api/exercises': { prerender: true }
   }
 })
