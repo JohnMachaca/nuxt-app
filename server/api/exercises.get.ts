@@ -1,23 +1,17 @@
-import fs from 'node:fs'
-import path from 'node:path'
 import { defineEventHandler } from 'h3'
+import { useStorage } from '#imports'
 
 export default defineEventHandler(async () => {
-  const exercisesDir = path.resolve(process.cwd(), 'app/pages/ejercicios')
+  const storage = useStorage('assets:server:ejercicios')
+  const keys = await storage.getKeys()
   
-  if (!fs.existsSync(exercisesDir)) {
-    return []
-  }
-
-  const files = fs.readdirSync(exercisesDir)
+  const exercises = []
   
-  const exercises = files
-    .filter(file => file.endsWith('.vue') || file.endsWith('.js') || file.endsWith('.ts'))
-    .map(file => {
+  for (const file of keys) {
+    if (file.endsWith('.vue') || file.endsWith('.js') || file.endsWith('.ts')) {
       try {
-        const filePath = path.join(exercisesDir, file)
-        const stats = fs.statSync(filePath)
-        const content = fs.readFileSync(filePath, 'utf-8')
+        const item = await storage.getItem(file)
+        const content = typeof item === 'string' ? item : (item ? Buffer.from(item as any).toString('utf-8') : '')
         
         // Simple logic to extract title and technologies
         const title = file.replace(/\.(vue|js|ts)$/, '')
@@ -48,23 +42,22 @@ export default defineEventHandler(async () => {
           if (dMatch?.[1]) jsDescription = dMatch[1]
         }
         
-        return {
+        exercises.push({
           slug: file.replace(/\.(vue|js|ts)$/, ''),
           title: jsTitle || titleMatch?.[1]?.trim() || title,
           description: jsDescription || descriptionMatch?.[1]?.trim() || 'Explora este ejercicio para ver el resultado funcional y el código fuente.',
           technologies: techMatch?.[1] ? techMatch[1].split(',').map(t => t.trim()) : technologies,
-          createdAt: stats.birthtime,
-          updatedAt: stats.mtime,
+          createdAt: new Date(),
+          updatedAt: new Date(),
           fileName: file,
           content: content
-        }
+        })
       } catch (e) {
         console.error(`Error processing file ${file}:`, e)
-        return null
       }
-    })
-    .filter(ex => ex !== null)
-    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+    }
+  }
 
-  return exercises
+  // Sort alphabetically by title
+  return exercises.sort((a, b) => a.title.localeCompare(b.title))
 })
