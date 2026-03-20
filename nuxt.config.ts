@@ -7,12 +7,6 @@ export default defineNuxtConfig({
   tailwindcss: {
     configPath: 'tailwind.config.ts'
   },
-  nitro: {
-    serverAssets: [{
-      baseName: 'ejercicios',
-      dir: './app/pages/ejercicios'
-    }]
-  },
   future: {
     compatibilityVersion: 4,
   }
